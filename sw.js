@@ -1,6 +1,4 @@
-/* add install event listener to window &Create cache (restaurant-v1)
-and add all files on it */
-var cache_Name='restaurant-v1'; //store cache name in the varible called cacheNmae
+var cache_Name='restaurant-v2'; //store cache name in the varible called cacheNmae
 self.addEventListener('install',function(event){
 	event.waitUntil(
 		caches.open(cache_Name).then(function(cache){
@@ -8,7 +6,7 @@ self.addEventListener('install',function(event){
 				'/',
 				'index.html',
 				'restaurant.html',
-				'css/styles.css',
+				'css/style.css',
 				'img/1.jpg',
 				'img/10.jpg',
 				'img/2.jpg',
@@ -44,14 +42,15 @@ self.addEventListener('activate',function(event){
 })
 /*add fetch event listener to window and use resopndWith method and check if caches match with event.request
 if true return this resopnse if false fetch event.request from network*/
-self.addEventListener('fetch',function(event){
-	event.respondWith(
-		caches.match(event.request).then(function(response){
-			if(response){
-				return response;}
-			else{
-				return fetch(event.request)}
-		})
-		)
-
-})
+self.addEventListener("fetch", event => {
+  if (event.request.url.startsWith(self.location.origin)) {
+    event.respondWith(
+      caches.match(event.request).then(response => {
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      })
+    );
+  }
+});

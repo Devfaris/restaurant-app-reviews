@@ -57,12 +57,12 @@ nav {
   height: 80px;
   background-color: #252831;
   text-align:center;
+  position: relative;
   /* display: flex;
   align-items: center; */
 }
 nav h1 {
   margin: auto;
-  padding-top: 20px;
 }
 nav h1 a {
   color: #fff;
