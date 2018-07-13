@@ -273,7 +273,7 @@ a.link-skip:focus{
    padding: 20px 20px 70px;
 }
 /*make header in the center*/
-#reviews-container h2{
+#reviews-container h3{
   text-align: center;
 }
 /*fix review list padding and margin*/
